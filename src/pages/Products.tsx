@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import { Smartphone, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 const brands = [
   { name: "Apple", tagline: "iPhone series — experience premium innovation", popular: ["iPhone 15", "iPhone 14", "iPhone SE"] },
@@ -15,19 +16,24 @@ const brands = [
 
 const Products = () => (
   <Layout>
+    <SEO
+      title="Products & Brands"
+      description="Shop the latest smartphones from Apple, Samsung, Realme, POCO, Vivo, OPPO, Motorola, OnePlus and more at Gopal Mobile Bhopal. Authorized dealer with best prices."
+      keywords="buy smartphone Bhopal, Apple iPhone Bhopal, Samsung Galaxy Bhopal, Realme POCO Vivo OPPO Motorola OnePlus dealers MP Nagar, mobile phone shop Bhopal"
+    />
     {/* Hero */}
     <section className="bg-gradient-hero">
-      <div className="container py-16 md:py-24 text-center">
-        <h1 className="text-4xl md:text-5xl font-display font-bold text-primary-foreground mb-4">Our Brands</h1>
-        <p className="text-primary-foreground/80 max-w-lg mx-auto">
+      <div className="container py-12 sm:py-16 md:py-24 text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-primary-foreground mb-4">Our Brands</h1>
+        <p className="text-sm sm:text-base text-primary-foreground/80 max-w-lg mx-auto">
           We stock the latest models from all major smartphone brands. Visit our store to explore, compare and find your perfect phone.
         </p>
       </div>
     </section>
 
     {/* Brands Grid */}
-    <section className="container py-16">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <section className="container py-12 sm:py-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
         {brands.map((brand, i) => (
           <div
             key={brand.name}
@@ -53,9 +59,9 @@ const Products = () => (
 
     {/* Accessories */}
     <section className="bg-muted">
-      <div className="container py-16 text-center">
-        <h2 className="text-3xl font-display font-bold text-foreground mb-3">Accessories & More</h2>
-        <p className="text-muted-foreground max-w-md mx-auto mb-8">
+      <div className="container py-12 sm:py-16 text-center">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-3">Accessories & More</h2>
+        <p className="text-sm sm:text-base text-muted-foreground max-w-md mx-auto mb-8">
           Cases, screen protectors, chargers, earphones, power banks — we have everything to complement your smartphone.
         </p>
         <Link

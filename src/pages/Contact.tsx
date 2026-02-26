@@ -1,20 +1,26 @@
 import Layout from "@/components/Layout";
 import { MapPin, Phone, Mail, Clock, Navigation } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const Contact = () => (
   <Layout>
+    <SEO
+      title="Contact Us"
+      description="Visit Gopal Mobile at Shop No. 35, Zone-II, M.P. Nagar, Bhopal. Call us for queries about smartphones, repairs, and accessories. Open Mon-Sat 10AM-9PM, Sun 11AM-7PM."
+      keywords="Gopal Mobile address, mobile shop MP Nagar Bhopal, phone repair near me Bhopal, contact Gopal Mobile, mobile store Bhopal location"
+    />
     {/* Hero */}
     <section className="bg-gradient-hero">
-      <div className="container py-16 md:py-24 text-center">
-        <h1 className="text-4xl md:text-5xl font-display font-bold text-primary-foreground mb-4">Contact Us</h1>
-        <p className="text-primary-foreground/80 max-w-lg mx-auto">
+      <div className="container py-12 sm:py-16 md:py-24 text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-primary-foreground mb-4">Contact Us</h1>
+        <p className="text-sm sm:text-base text-primary-foreground/80 max-w-lg mx-auto">
           Visit our store or reach out — we're always happy to help!
         </p>
       </div>
     </section>
 
-    <section className="container py-16">
-      <div className="grid md:grid-cols-2 gap-10">
+    <section className="container py-12 sm:py-16">
+      <div className="grid md:grid-cols-2 gap-8 md:gap-10">
         {/* Contact Info */}
         <div>
           <h2 className="text-2xl font-display font-bold text-foreground mb-6">Get In Touch</h2>
@@ -37,7 +43,7 @@ const Contact = () => (
               </div>
               <div>
                 <h3 className="font-semibold text-foreground mb-1">Phone</h3>
-                <p className="text-sm text-muted-foreground">+91 XXXXX XXXXX</p>
+                <a href="tel:09755533333" className="text-sm text-muted-foreground hover:text-primary transition-colors">097555 33333</a>
               </div>
             </div>
 
@@ -46,8 +52,12 @@ const Contact = () => (
                 <Mail className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                <p className="text-sm text-muted-foreground">gopalmobile@email.com</p>
+                <h3 className="font-semibold text-foreground mb-1">Social Media</h3>
+                <div className="flex gap-3 mt-1">
+                  <a href="https://www.instagram.com/gopalmobile/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Instagram</a>
+                  <a href="https://www.facebook.com/GopalMobile" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Facebook</a>
+                  <a href="https://www.youtube.com/@gopalmobilebhopal" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">YouTube</a>
+                </div>
               </div>
             </div>
 
@@ -74,7 +84,7 @@ const Contact = () => (
         </div>
 
         {/* Map Embed */}
-        <div className="rounded-2xl overflow-hidden shadow-elevated border border-border h-[500px]">
+        <div className="rounded-2xl overflow-hidden shadow-elevated border border-border h-[300px] sm:h-[400px] md:h-[500px]">
           <iframe
             title="Gopal Mobile Location"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.2!2d77.43!3d23.23!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDEzJzQ4LjAiTiA3N8KwMjUnNDguMCJF!5e0!3m2!1sen!2sin!4v1"

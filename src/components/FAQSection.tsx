@@ -15,7 +15,7 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="container py-16 md:py-24">
+    <section className="container py-12 sm:py-16 md:py-24">
       <ScrollReveal>
         <div className="text-center mb-12">
           <span className="text-xs font-semibold text-accent uppercase tracking-widest">Got Questions?</span>

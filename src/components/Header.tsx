@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, MapPin } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
   { label: "Home", path: "/" },
@@ -15,30 +16,39 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-card/80 backdrop-blur-xl border-b border-border">
-      {/* Top bar */}
       <div className="bg-gradient-hero">
-        <div className="container flex items-center justify-between py-1.5 text-sm text-primary-foreground">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5">
-              <Phone className="h-3 w-3" /> +91 XXXXX XXXXX
-            </span>
-            <span className="hidden sm:flex items-center gap-1.5">
+        <div className="container flex items-center justify-between py-2 sm:py-1.5 text-[11px] sm:text-sm text-primary-foreground">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <a href="tel:09755533333" className="flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+              <Phone className="h-3 w-3" /> 097555 33333
+            </a>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Gopal+Mobile+MP+Nagar+Bhopal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex items-center gap-1.5 hover:opacity-80 transition-opacity"
+            >
               <MapPin className="h-3 w-3" /> M.P. Nagar, Bhopal
-            </span>
+            </a>
           </div>
           <span className="hidden md:block text-xs opacity-80">Mon-Sat: 10AM - 9PM | Sun: 11AM - 7PM</span>
         </div>
       </div>
 
       {/* Main nav */}
-      <div className="container flex items-center justify-between h-16">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="h-10 w-10 rounded-lg bg-gradient-hero flex items-center justify-center">
-            <span className="text-primary-foreground font-display font-bold text-lg">G</span>
-          </div>
+      <div className="container flex h-16 sm:h-20 items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="h-9 w-9 sm:h-11 sm:w-11 rounded-lg bg-gradient-hero flex items-center justify-center shadow-lg"
+          >
+            <span className="text-primary-foreground font-display font-bold text-base sm:text-xl">G</span>
+          </motion.div>
           <div>
-            <span className="font-display font-bold text-xl text-foreground">Gopal Mobile</span>
-            <span className="block text-[10px] text-muted-foreground -mt-1 tracking-widest uppercase">Your Trusted Mobile Store</span>
+            <span className="font-display font-bold text-lg sm:text-xl text-foreground block leading-tight">Gopal Mobile</span>
+            <span className="block text-[8px] sm:text-[10px] text-muted-foreground tracking-[0.15em] sm:tracking-widest uppercase font-medium">Your Trusted Mobile Store</span>
           </div>
         </Link>
 
@@ -48,11 +58,10 @@ const Header = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                location.pathname === item.path
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
-              }`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${location.pathname === item.path
+                ? "bg-primary text-primary-foreground"
+                : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                }`}
             >
               {item.label}
             </Link>
@@ -68,25 +77,39 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile nav */}
-      {mobileOpen && (
-        <nav className="md:hidden border-t border-border bg-card animate-fade-in">
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              onClick={() => setMobileOpen(false)}
-              className={`block px-6 py-3 text-sm font-medium border-b border-border transition-colors ${
-                location.pathname === item.path
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-muted"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.nav
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-full left-0 right-0 border-b border-border bg-card shadow-2xl md:hidden z-50 max-h-[80vh] overflow-y-auto"
+          >
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => setMobileOpen(false)}
+                className={`block px-6 py-4 text-sm font-medium border-b border-border last:border-0 transition-colors ${location.pathname === item.path
+                    ? "bg-primary/5 text-primary"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="p-6 bg-muted/30">
+              <a
+                href="tel:09755533333"
+                className="flex items-center justify-center gap-2 w-full py-3 bg-primary text-primary-foreground rounded-xl font-bold text-sm shadow-lg active:scale-95 transition-transform"
+              >
+                <Phone className="h-4 w-4" /> Call 097555 33333
+              </a>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
