@@ -109,4 +109,19 @@
   .shadow-elevated {
     box-shadow: var(--shadow-elevated);
   }
+
+  .animate-fade-in {
+    animation: hero-fade-in 0.8s ease-out both;
+  }
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
